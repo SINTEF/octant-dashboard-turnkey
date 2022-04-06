@@ -42,23 +42,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          platforms: linux/arm64
-          build-args: |
-            OCTANT_VERSION=0.25.1
-            OCTANT_ARCH=arm64
-            OCTANT_CHECKSUM=a3eb4973a0c869267e3916bd43e0b41b2bbc73b898376b795a617299c7b2a623
-          push: true
-          tags: ${{ steps.meta-main.outputs.tags }}
-          labels: ${{ steps.meta-main.outputs.labels }}
-      - name: Build and push Docker amd64 image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          platforms: linux/amd64
-          build-args: |
-            OCTANT_VERSION=0.25.1
-            OCTANT_ARCH=64bit
-            OCTANT_CHECKSUM=b12bb6752e43f4e0fe54278df8e98dee3439c4066f66cdb7a0ca4a1c7d8eaa1e
+          platforms: linux/arm64,linux/amd64
           push: true
           tags: ${{ steps.meta-main.outputs.tags }}
           labels: ${{ steps.meta-main.outputs.labels }}
