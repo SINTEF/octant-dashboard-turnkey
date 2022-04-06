@@ -12,8 +12,7 @@ ADD https://github.com/vmware-tanzu/octant/releases/download/v${OCTANT_VERSION}/
 
 ARG TARGETARCH
 
-FROM alpine:3 as builder
-COPY --from=add-${TARGETARCH} /tmp/octant.tar.gz /tmp/octant.tar.gz
+FROM add-${TARGETARCH} as builder
 RUN sha256sum /tmp/octant.tar.gz | grep "$OCTANT_CHECKSUM" && \
     if [[ $? -ne 0 ]]; then echo "Bad checksum"; exit 444; fi && \
     tar -xzvf /tmp/octant.tar.gz --strip 1 -C /opt
