@@ -1,29 +1,18 @@
 FROM alpine:3 AS builder
 
-ENV OCTANT_VERSION=0.25.0
-ENV OCTANT_CHECKSUM=a90e489858133ffdb88c64b2ed68a1013720eb966e36958e8008ba8d6dce2e76
+ARG OCTANT_VERSION=0.25.1
+# Can be 64bit (for amd64), arm, and arm64
+ARG OCTANT_ARCH=64bit
+ARG OCTANT_CHECKSUM=b12bb6752e43f4e0fe54278df8e98dee3439c4066f66cdb7a0ca4a1c7d8eaa1e
 
-RUN apk update && \
-    apk add \
-      ca-certificates \
-      xdg-utils \
-      && \
-    wget --quiet --output-document /tmp/octant.tar.gz \
-        https://github.com/vmware-tanzu/octant/releases/download/v${OCTANT_VERSION}/octant_${OCTANT_VERSION}_Linux-64bit.tar.gz && \
-    sha256sum /tmp/octant.tar.gz | grep "$OCTANT_CHECKSUM" && \
+ADD https://github.com/vmware-tanzu/octant/releases/download/v${OCTANT_VERSION}/octant_${OCTANT_VERSION}_Linux-${OCTANT_ARCH}.tar.gz /tmp/octant.tar.gz
+
+RUN sha256sum /tmp/octant.tar.gz | grep "$OCTANT_CHECKSUM" && \
     if [[ $? -ne 0 ]]; then echo "Bad checksum"; exit 444; fi && \
     tar -xzvf /tmp/octant.tar.gz --strip 1 -C /opt
 
-COPY docker-entrypoint.sh /
-
-
 FROM alpine:3
-
-WORKDIR /tmp
-
 RUN addgroup -g 2000 -S octant && adduser -u 1000 -h /home/octant -G octant -S octant
-
 COPY --from=builder /opt/octant /opt/octant
 COPY docker-entrypoint.sh /
-
 ENTRYPOINT /docker-entrypoint.sh
