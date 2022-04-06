@@ -1,11 +1,8 @@
-name: Create and publish a Docker image
+name: Create and publish a Docker images
 
 on:
   push:
-    branches: [master]
   pull_request:
-    branches: [master]
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
