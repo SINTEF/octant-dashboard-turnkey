@@ -33,7 +33,7 @@ Effectively, using this repo you can:
 First, add the Helm chart repository (provided through GitHub Pages with the help of [Chart Releaser](https://github.com/helm/chart-releaser))
 
 ```
-helm repo add octant-dashboard https://aleveille.github.io/octant-dashboard-turnkey/repo
+helm repo add octant-dashboard https://sintef.github.io/octant-dashboard-turnkey/repo
 ```
 
 Then install the chart:
