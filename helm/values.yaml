@@ -72,10 +72,9 @@ service:
   type: ClusterIP
   port: 8000
 
-ingress:
+oauth2-proxy:
   enabled: false
-  hosts: []
-  tls: []
+  # See https://github.com/oauth2-proxy/manifests/tree/main/helm/oauth2-proxy
 
 resources: {}
 #  limits:
