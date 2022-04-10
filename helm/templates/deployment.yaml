@@ -85,7 +85,7 @@ spec:
             - name: OCTANT_PLUGINS_LIST
               value: {{ .Values.plugins.install | join " " | quote }}
             - name: OCTANT_CONTEXT_NAME
-              value: {{ .Values.contextName | quote }} 
+              value: {{ .Values.octantContextName | quote }} 
           {{- if .Values.extraEnvs }}
             {{- toYaml .Values.extraEnvs | nindent 12 }}
           {{- end }}

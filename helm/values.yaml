@@ -4,6 +4,8 @@ image:
   fullname: sintef/octant-dashboard:0.25.1
   pullPolicy: IfNotPresent
 
+octantContextName: "readonly-context"
+
 ## Additional environment variables to set
 extraEnvs: []
 # extraEnvs:
