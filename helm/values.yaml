@@ -1,7 +1,8 @@
 replicas: 1
 
 image:
-  fullname: sintef/octant-dashboard:0.25.1
+  repository: ghcr.io/sintef/octant-dashboard
+  tag: ~
   pullPolicy: IfNotPresent
 
 octantContextName: "readonly-context"
