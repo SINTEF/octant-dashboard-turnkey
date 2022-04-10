@@ -47,13 +47,6 @@ and that assumes you are terminating SSL somewhere upstream. By default, this ch
 already part of this chart (in the values files below you can see an example to whitelist *everything*).
 
 ```
-keycloakGatekeeper:
-  enabled: true
-  url: https://keycloak.yourdns.zone.com/auth/realms/master
-  clientId: octantClientId
-  clientSecret: 123e4567-e89b-12d3-a456-426655440000
-  proxyPort: 4999
-
 #imagePullSecrets:
 #- name: someSecret
 
