@@ -4,6 +4,14 @@ This repository provides ready-to-use Helm deployment files and a Docker image
 to deploy the [Octant](https://octant.dev/) tool in your Kubernetes cluster in
 a read-only manner.
 
+## This is a fork of [aleveille/octant-dashboard-turnkey](https://github.com/aleveille/octant-dashboard-turnkey)
+
+Changes with upstream:
+
+ - Uses oauth2-proxy instead of keycloak-gatekeeper.
+ - Upgrade octant version (0.25.0 to 0.25.1).
+ - Docker image for both ARM64 and AMD64 platforms.
+
 ## What is Octant
 
 From the [Octant GitHub repository](https://github.com/vmware-tanzu/octant):
