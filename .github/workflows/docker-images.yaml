@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: sintef/octant-dashboard-turnkey
+  IMAGE_NAME: sintef/octant-dashboard
 
 jobs:
   build-and-push-image:
