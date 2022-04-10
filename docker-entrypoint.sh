@@ -6,6 +6,7 @@ server=https://kubernetes.default.svc:443
 OCTANT_HTTP_PORT=${OCTANT_HTTP_PORT:-8000}
 OCTANT_PLUGINS_DIR=${OCTANT_PLUGINS_DIR%/}
 OCTANT_PLUGINS_DIR=${OCTANT_PLUGINS_DIR:-/home/octant/.config/octant/plugins}
+OCTANT_CONTEXT_NAME=${OCTANT_CONTEXT_NAME:-readonly-context}
 
 echo "Grabbing Kubernetes pod secret to access API and list resources"
 ca=$(cat /var/run/secrets/kubernetes.io/serviceaccount/ca.crt | base64 | tr -d '\n')
@@ -16,17 +17,17 @@ echo "
 apiVersion: v1
 kind: Config
 clusters:
-- name: k8s-on-premise
+- name: local
   cluster:
     certificate-authority-data: ${ca}
     server: ${server}
 contexts:
-- name: readonly-context
+- name: ${OCTANT_CONTEXT_NAME}
   context:
-    cluster: k8s-on-premise
+    cluster: local
     namespace: ${namespace}
     user: octant-sa
-current-context: readonly-context
+current-context: ${OCTANT_CONTEXT_NAME}
 users:
 - name: octant-sa
   user:
