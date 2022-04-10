@@ -32,13 +32,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for main image
+      - name: Extract metadata (tags, labels) for docker image
         id: meta-main
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build and push Docker arm64 image
+      - name: Build and push Docker images
         uses: docker/build-push-action@v2
         with:
           context: ./

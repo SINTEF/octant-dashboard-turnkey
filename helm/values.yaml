@@ -74,6 +74,8 @@ service:
 
 oauth2-proxy:
   enabled: false
+  ingress:
+    enabled: false
   # See https://github.com/oauth2-proxy/manifests/tree/main/helm/oauth2-proxy
 
 resources: {}

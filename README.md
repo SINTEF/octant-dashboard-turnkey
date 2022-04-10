@@ -76,7 +76,7 @@ oauth2-proxy:
     tls: []
 
 clusterRole:
-  additionalRules:
+  rules:
   - apiGroups:
     - "*"
     resources: ["*"]
