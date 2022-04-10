@@ -50,17 +50,30 @@ already part of this chart (in the values files below you can see an example to 
 #imagePullSecrets:
 #- name: someSecret
 
-ingress:
+oauth2-proxy:
   enabled: true
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    external-dns.alpha.kubernetes.io/target: yourdns.zone.com.
-  hosts:
-    - host: octant.yourdns.zone.com
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-  tls: []
+  config:
+    clientID: octantClientId
+    clientSecret: 123e4567-e89b-12d3-a456-426655440000
+    cookieSecret: 0123456789abcdef
+    configFile: |
+        provider = "keycloak-oidc"
+        skip_provider_button = true
+        redirect_url = "https://octant.example.net/oauth2/callback"
+        oidc_issuer_url = "https://keycloak.example.net/auth/realms/master"
+        reverse_proxy = true
+        upstreams = ["http://octant:8000/"]
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      external-dns.alpha.kubernetes.io/target: octant.example.net.
+    hosts:
+      - host: octant.example.net
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+    tls: []
 
 clusterRole:
   additionalRules:
