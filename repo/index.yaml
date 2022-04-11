@@ -3,7 +3,22 @@ entries:
   octant:
   - apiVersion: v2
     appVersion: 0.25.1
-    created: "2022-04-11T09:39:28.602257+02:00"
+    created: "2022-04-11T09:43:18.340796+02:00"
+    dependencies:
+    - condition: oauth2-proxy.enabled
+      name: oauth2-proxy
+      repository: https://oauth2-proxy.github.io/manifests
+      version: 6.2.0
+    description: A Helm chart to deploy Octant (vmware-tanzu/octant) to Kubernetes
+    digest: cad641d1a890515031e57c2ce5db226e8c622e9c2ebc7e5030472440eaf0da38
+    name: octant
+    type: application
+    urls:
+    - https://github.com/SINTEF/octant-dashboard-turnkey/releases/download/octant-1.0.2/octant-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 0.25.1
+    created: "2022-04-11T09:43:18.098773+02:00"
     dependencies:
     - condition: oauth2-proxy.enabled
       name: oauth2-proxy
@@ -18,7 +33,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.25.1
-    created: "2022-04-11T09:39:28.36656+02:00"
+    created: "2022-04-11T09:43:17.860265+02:00"
     dependencies:
     - condition: oauth2-proxy.enabled
       name: oauth2-proxy
@@ -31,4 +46,4 @@ entries:
     urls:
     - https://github.com/SINTEF/octant-dashboard-turnkey/releases/download/octant-1.0.0/octant-1.0.0.tgz
     version: 1.0.0
-generated: "2022-04-11T09:39:28.602266+02:00"
+generated: "2022-04-11T09:43:18.34081+02:00"
