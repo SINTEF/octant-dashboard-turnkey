@@ -2,9 +2,7 @@
 {{- $oauth2Proxy := index .Values "oauth2-proxy" }}
 {{- if and $oauth2Proxy.enabled $oauth2Proxy.ingress.enabled }}
 {{- range $host := $oauth2Proxy.ingress.hosts }}
-  {{- range .paths }}
-  http{{ if $oauth2Proxy.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
-  {{- end }}
+  http{{ if $oauth2Proxy.ingress.tls }}s{{ end }}://{{ $host.host }}/
 {{- end }}
 {{- else if contains "NodePort" .Values.service.type }}
   export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "octant.fullname" . }})
