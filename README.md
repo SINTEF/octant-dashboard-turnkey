@@ -67,6 +67,7 @@ oauth2-proxy:
     configFile: |
         provider = "keycloak-oidc"
         skip_provider_button = true
+        email_domains = ["*"]
         redirect_url = "https://octant.example.net/oauth2/callback"
         oidc_issuer_url = "https://keycloak.example.net/auth/realms/master"
         reverse_proxy = true
