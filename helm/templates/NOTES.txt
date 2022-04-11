@@ -3,7 +3,7 @@
 {{- if and $oauth2Proxy.enabled $oauth2Proxy.ingress.enabled }}
 {{- range $host := $oauth2Proxy.ingress.hosts }}
   {{- range .paths }}
-  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
+  http{{ if $oauth2Proxy.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
   {{- end }}
 {{- end }}
 {{- else if contains "NodePort" .Values.service.type }}
