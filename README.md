@@ -1,5 +1,7 @@
 # Octant Dashboard turnkey Docker image and Helm deployment files
 
+# ⚠️ Project is archived because Octant is not maintained anymore. ⚠️
+
 This repository provides ready-to-use Helm deployment files and a Docker image
 to deploy the [Octant](https://octant.dev/) tool in your Kubernetes cluster in
 a read-only manner.
